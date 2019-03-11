@@ -12,6 +12,7 @@ node --> v10.15.1
 npm --> 6.4.1
 
 :smile:
+
 1.npm install
 
 2.npm run dev:h5
