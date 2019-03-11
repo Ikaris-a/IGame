@@ -11,7 +11,7 @@ node --> v10.15.1
 
 npm --> 6.4.1
 
-:smile:
+:alien:
 
 1.npm install
 
