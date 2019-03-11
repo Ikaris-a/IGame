@@ -1,7 +1,7 @@
 # IGame
 LOL wonderful moment
 
-# 项目运行环境
+# 项目
 支持
 * 小程序
 * h5
@@ -16,6 +16,8 @@ npm --> 6.4.1
 Taro
 
 :alien:
+
+# 运行
 
 1.npm install
 
