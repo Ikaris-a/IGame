@@ -3,9 +3,9 @@ LOL wonderful moment
 
 # 项目运行环境
 支持
-*** 小程序
-*** h5
-*** React Native
+* 小程序
+* h5
+* React Native
 
 node
 npm
