@@ -11,6 +11,10 @@ node --> v10.15.1
 
 npm --> 6.4.1
 
+# 架构
+
+Taro
+
 :alien:
 
 1.npm install
