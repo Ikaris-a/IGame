@@ -15,6 +15,8 @@ npm --> 6.4.1
 
 Taro
 
+基于React
+
 :alien:
 
 # 运行
