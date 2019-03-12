@@ -53,7 +53,6 @@ class Index extends Component {
           title="首页 "
           rightFirstIconType="bullet-list"
         />
-
         <Swiper
           className="test-h"
           indicatorColor="#999"
@@ -88,7 +87,7 @@ class Index extends Component {
               iconType: "home"
             },
             { title: "上传", iconType: "add" },
-            { title: "个人中心", iconType: "user", text: "100", max: "99" }
+            { title: "我", iconType: "user", text: "100", max: "99" }
           ]}
           onClick={this.handleClick.bind(this)}
           current={this.state.current}
