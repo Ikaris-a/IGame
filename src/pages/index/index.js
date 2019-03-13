@@ -130,7 +130,7 @@ class Index extends Component {
               title: "首页",
               iconType: "home"
             },
-            { title: "上传", iconType: "add" },
+            { title: "", iconType: "camera" },
             { title: "我", iconType: "user", text: "100", max: "99" }
           ]}
           onClick={this.handleClick.bind(this)}
