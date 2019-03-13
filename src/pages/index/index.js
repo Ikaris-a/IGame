@@ -1,5 +1,11 @@
 import Taro, { Component } from "@tarojs/taro";
-import { View, Swiper, SwiperItem, Image } from "@tarojs/components";
+import {
+  View,
+  Swiper,
+  SwiperItem,
+  Image,
+  ScrollView
+} from "@tarojs/components";
 import { observer, inject } from "@tarojs/mobx";
 import { AtNavBar, AtTabBar, AtSearchBar, AtTabs, AtTabsPane } from "taro-ui";
 import "./index.less";
@@ -11,7 +17,8 @@ class Index extends Component {
     super(...arguments);
     this.state = {
       value: "",
-      tabCurrent: 0
+      current: 0,
+      footerCurrent: 0
     };
   }
   config = {
@@ -54,69 +61,69 @@ class Index extends Component {
   handleClick(value) {}
   handleTabClick(value) {
     this.setState({
-      tabCurrent: value
+      current: value
     });
   }
   render() {
     const {
       counterStore: { counter }
     } = this.props;
-    const tabList = [{ title: "推荐" }, { title: "视频" }, { title: "图文" }];
+    const tabList = [
+      { title: "推荐" },
+      { title: "赛事" },
+      { title: "视频" }
+      // ,
+      // { title: "专栏" },
+      // { title: "版本" },
+      // { title: "英雄" }
+    ];
+    //   <AtSearchBar
+    //   fixed
+    //   value={this.state.value}
+    //   onChange={this.onChange.bind(this)}
+    // />
     return (
-      <View className="index">
-        <AtNavBar
-          onClickRgIconNd={this.handleClick}
-          onClickLeftIcon={this.handleClick}
-          color="#000"
-          title="首页 "
-          rightFirstIconType="bullet-list"
-        />
+      <View className="ai-container">
         <AtSearchBar
+          fixed
           value={this.state.value}
           onChange={this.onChange.bind(this)}
         />
         <AtTabs
-          current={this.state.tabCurrent}
+          className="ai-home-tabs"
+          current={this.state.current}
           tabList={tabList}
           onClick={this.handleTabClick.bind(this)}
         >
-          <AtTabsPane current={this.state.tabCurrent} index={0}>
-            <View style="padding: 100px 50px;background-color: #FAFBFC;text-align: center;">
-              推荐
-            </View>
-          </AtTabsPane>
-          <AtTabsPane current={this.state.tabCurrent} index={1}>
-            <View style="padding: 100px 50px;background-color: #FAFBFC;text-align: center;">
-              {" "}
-              <Swiper
-                className="test-h"
-                indicatorColor="#999"
-                indicatorActiveColor="#1DA1F2"
-                indicatorDots
-                autoplay
+          <AtTabsPane current={this.state.current} index={0}>
+            <View style="background-color: #FAFBFC;text-align: center;">
+              <ScrollView
+                className="scrollview"
+                scrollY
+                scrollWithAnimation
+                scrollTop="0"
+                style="height: 150px;"
+                lowerThreshold="20"
+                upperThreshold="20"
+                onScrolltoupper={this.onScrolltoupper}
+                onScroll={this.onScroll}
               >
-                <SwiperItem>
-                  <Image
-                    style="width:100%;background: #fff;"
-                    src="http://img.dwstatic.com/lol/1512/314791918139/1450837187930.jpg"
-                  />
-                </SwiperItem>
-                <SwiperItem>
-                  <Image
-                    style="width:100%;background: #fff;"
-                    src="http://img3.dwstatic.com/lol/1512/314791918139/1450837176952.jpg"
-                  />
-                </SwiperItem>
-                <SwiperItem>
-                  <Image
-                    style="width:100%;background: #fff;"
-                    src="http://img3.dwstatic.com/lol/1512/315414597848/1451460779102.jpg"
-                  />
-                </SwiperItem>
-              </Swiper>
+                <View style="height:150px;background-color:rgb(26,173,25);">
+                  A
+                </View>
+                <View style="height:150px;background-color:rgb(39,130,215);">
+                  B
+                </View>
+                <View style="height:150px;background-color:rgb(241,241,241);color: #333;">
+                  C
+                </View>
+              </ScrollView>
             </View>
           </AtTabsPane>
-          <AtTabsPane current={this.state.tabCurrent} index={2}>
+          <AtTabsPane current={this.state.current} index={1}>
+            <View style="padding: 100px 50px;background-color: #FAFBFC;text-align: center;" />
+          </AtTabsPane>
+          <AtTabsPane current={this.state.current} index={2}>
             <View style="padding: 100px 50px;background-color: #FAFBFC;text-align: center;">
               图文
             </View>
@@ -134,7 +141,7 @@ class Index extends Component {
             { title: "我", iconType: "user", text: "100", max: "99" }
           ]}
           onClick={this.handleClick.bind(this)}
-          current={this.state.current}
+          current={this.state.footerCurrent}
         />
       </View>
     );
