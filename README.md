@@ -1,4 +1,7 @@
 # IGame
+
+[![Wercker](https://img.shields.io/badge/IGame-1.0.0-blue.svg)]()
+
 LOL wonderful moment
 
 # 项目
