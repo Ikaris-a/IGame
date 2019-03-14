@@ -54,9 +54,7 @@ class Index extends Component {
     const { counterStore } = this.props;
     counterStore.incrementAsync();
   };
-  handleClick(value) {
-  
-  }
+  handleClick(value) {}
   handleTabClick(value) {
     this.setState({
       tabCurrent: value
@@ -73,6 +71,7 @@ class Index extends Component {
       // { title: "版本" },
       // { title: "英雄" }
     ];
+    const swipeable = false;
     return (
       <View className="ai-container">
         <Iheader />

@@ -26,7 +26,7 @@ class App extends Component {
     };
   }
   config = {
-    pages: ["pages/index/index", "pages/member/index"],
+    pages: ["pages/index/index", "/pages/camera/index", "pages/member/index"],
     window: {
       backgroundTextStyle: "light",
       navigationBarBackgroundColor: "#fff",
@@ -50,19 +50,6 @@ class App extends Component {
       <Provider store={store}>
         <View className="i-container">
           <Index />
-          <AtTabBar
-            fixed
-            tabList={[
-              {
-                title: "首页",
-                iconType: "home"
-              },
-              { title: "", iconType: "camera" },
-              { title: "我", iconType: "user", text: "100", max: "99" }
-            ]}
-            onClick={this.handleClick.bind(this)}
-            current={this.state.footerCurrent}
-          />
         </View>
       </Provider>
     );

@@ -3,7 +3,6 @@ import { View } from "@tarojs/components";
 import { observer, inject } from "@tarojs/mobx";
 import { AtTabBar } from "taro-ui";
 // import "./index.less";
-
 @inject("counterStore")
 @observer
 class Index extends Component {
@@ -18,12 +17,10 @@ class Index extends Component {
   componentWillMount() {}
 
   componentWillReact() {
-    console.log("componentWillReact");
+    // console.log("componentWillReact");
   }
 
-  componentDidMount() {
-  
-  }
+  componentDidMount() {}
 
   componentWillUnmount() {}
 
@@ -31,38 +28,33 @@ class Index extends Component {
 
   componentDidHide() {}
 
-  increment = () => {
+  setIndex = value => {
     const { counterStore } = this.props;
-    counterStore.increment();
-  };
-
-  decrement = () => {
-    const { counterStore } = this.props;
-    counterStore.decrement();
-  };
-
-  incrementAsync = () => {
-    const { counterStore } = this.props;
-    counterStore.incrementAsync();
+    counterStore.setTabIndex(value);
   };
   handleClick(value) {
     console.log(value);
-    this.setState({
-      current: value
-    });
     if (value === 2) {
       Taro.redirectTo({
         url: "/pages/member/index"
       });
     }
-
+    if (value === 1) {
+      Taro.redirectTo({
+        url: "/pages/camera/index"
+      });
+    }
     if (value === 0) {
       Taro.redirectTo({
         url: "/pages/index/index"
       });
     }
+    this.setIndex(value);
   }
   render() {
+    const {
+      counterStore: { counter }
+    } = this.props;
     return (
       <View className="ai-footer">
         <AtTabBar
@@ -76,7 +68,7 @@ class Index extends Component {
             { title: "我", iconType: "user", text: "100", max: "99" }
           ]}
           onClick={this.handleClick.bind(this)}
-          current={this.state.current}
+          current={counter}
         />
       </View>
     );
