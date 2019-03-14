@@ -8,10 +8,7 @@ import {
 } from "@tarojs/components";
 import { observer, inject } from "@tarojs/mobx";
 import { AtNavBar, AtTabBar, AtSearchBar, AtTabs, AtTabsPane } from "taro-ui";
-import "./index.less";
-import Ifooter from "../../components/footer/footer";
-import Iheader from "../../components/header/header";
-import Ihome from "./home/home";
+import "./masonry.scss";
 @inject("counterStore")
 @observer
 class Index extends Component {
@@ -63,32 +60,30 @@ class Index extends Component {
   }
   goMember() {}
   render() {
-    const tabList = [
-      { title: "推荐" },
-      { title: "赛事" },
-      { title: "视频" }
-      // ,
-      // { title: "专栏" },
-      // { title: "版本" },
-      // { title: "英雄" }
-    ];
-    const swipeable = false;
     return (
-      <View className="ai-container">
-        <Iheader />
-        <AtTabs
-          swipeable={swipeable}
-          className="ai-home-tabs ai-fixed"
-          current={this.state.tabCurrent}
-          tabList={tabList}
-          onClick={this.handleTabClick.bind(this)}
-        >
-          <AtTabsPane current={this.state.tabCurrent} index={0} />
-          <AtTabsPane current={this.state.tabCurrent} index={1} />
-          <AtTabsPane current={this.state.tabCurrent} index={2} />
-        </AtTabs>
-        <Ihome />
-        <Ifooter />
+      <View className="">
+        <div className="g-container">
+          <div className="g-queue">
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+          </div>
+          <div className="g-queue">
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+            <div className="g-item" />
+          </div>
+        </div>
       </View>
     );
   }
