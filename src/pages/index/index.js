@@ -9,7 +9,8 @@ import {
 import { observer, inject } from "@tarojs/mobx";
 import { AtNavBar, AtTabBar, AtSearchBar, AtTabs, AtTabsPane } from "taro-ui";
 import "./index.less";
-
+import Ifooter from "../../components/footer/footer";
+import Iheader from "../../components/header/header";
 @inject("counterStore")
 @observer
 class Index extends Component {
@@ -18,7 +19,7 @@ class Index extends Component {
     this.state = {
       value: "",
       current: 0,
-      footerCurrent: 0
+      tabCurrent: 0
     };
   }
   config = {
@@ -53,21 +54,16 @@ class Index extends Component {
     const { counterStore } = this.props;
     counterStore.incrementAsync();
   };
-  onChange(value) {
-    this.setState({
-      value: value
-    });
+  handleClick(value) {
+  
   }
-  handleClick(value) {}
   handleTabClick(value) {
     this.setState({
-      current: value
+      tabCurrent: value
     });
   }
+  goMember() {}
   render() {
-    const {
-      counterStore: { counter }
-    } = this.props;
     const tabList = [
       { title: "推荐" },
       { title: "赛事" },
@@ -77,25 +73,16 @@ class Index extends Component {
       // { title: "版本" },
       // { title: "英雄" }
     ];
-    //   <AtSearchBar
-    //   fixed
-    //   value={this.state.value}
-    //   onChange={this.onChange.bind(this)}
-    // />
     return (
       <View className="ai-container">
-        <AtSearchBar
-          fixed
-          value={this.state.value}
-          onChange={this.onChange.bind(this)}
-        />
+        <Iheader />
         <AtTabs
           className="ai-home-tabs"
-          current={this.state.current}
+          current={this.state.tabCurrent}
           tabList={tabList}
           onClick={this.handleTabClick.bind(this)}
         >
-          <AtTabsPane current={this.state.current} index={0}>
+          <AtTabsPane current={this.state.tabCurrent} index={0}>
             <View style="background-color: #FAFBFC;text-align: center;">
               <ScrollView
                 className="scrollview"
@@ -120,29 +107,16 @@ class Index extends Component {
               </ScrollView>
             </View>
           </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={1}>
+          <AtTabsPane current={this.state.tabCurrent} index={1}>
             <View style="padding: 100px 50px;background-color: #FAFBFC;text-align: center;" />
           </AtTabsPane>
-          <AtTabsPane current={this.state.current} index={2}>
+          <AtTabsPane current={this.state.tabCurrent} index={2}>
             <View style="padding: 100px 50px;background-color: #FAFBFC;text-align: center;">
               图文
             </View>
           </AtTabsPane>
         </AtTabs>
-
-        <AtTabBar
-          fixed
-          tabList={[
-            {
-              title: "首页",
-              iconType: "home"
-            },
-            { title: "", iconType: "camera" },
-            { title: "我", iconType: "user", text: "100", max: "99" }
-          ]}
-          onClick={this.handleClick.bind(this)}
-          current={this.state.footerCurrent}
-        />
+        <Ifooter />
       </View>
     );
   }
